@@ -1,0 +1,54 @@
+/* Global Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f8f9fa;
+  }
+  
+  /* Login Page Styles */
+  #login-page {
+    background: url('https://source.unsplash.com/1600x900/?city,parking') no-repeat center center/cover;
+    position: relative;
+  }
+  
+  .login-card {
+    width: 100%;
+    max-width: 400px;
+    background-color: rgba(255, 255, 255, 0.95);
+    border: none;
+    border-radius: 10px;
+    padding: 20px;
+  }
+  
+  /* Map and Dashboard Styles */
+  #map {
+    height: calc(100vh - 56px); /* subtract navbar height */
+    width: 100%;
+  }
+  
+  #panel {
+    background: #fff;
+    padding: 10px;
+    max-width: 300px;
+    border-radius: 4px;
+    position: absolute;
+    top: 80px;
+    left: 20px;
+    z-index: 1000;
+  }
+  
+  /* Owner Control Button (only visible on owner pages) */
+  .owner-control {
+    position: absolute;
+    top: 80px;
+    left: 20px;
+    z-index: 1100;
+  }
+  
+  /* Leaflet Geocoder Customization */
+  .leaflet-control-geocoder {
+    margin-top: 8px;
+  }
+  

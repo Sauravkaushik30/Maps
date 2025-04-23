@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Parking Finder App - User Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Bootstrap CSS (v5) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <!-- Leaflet Routing Machine CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
+  <!-- Leaflet Control Geocoder CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Navigation for regular user -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Parking Finder - User</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#userNavbar" aria-controls="userNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="userNavbar">
+        <ul class="navbar-nav ms-auto align-items-center">
+          <li class="nav-item me-2">
+            <button class="btn btn-outline-light" onclick="goToMyLocation()">My Location</button>
+          </li>
+          <li class="nav-item me-2">
+            <div id="geocoder" class="d-flex"></div>
+          </li>
+          <li class="nav-item">
+            <a href="dashboardUser.html" class="btn btn-outline-light">Dashboard</a>
+          </li>
+          <li class="nav-item ms-2">
+            <a href="index.html" class="btn btn-outline-light">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main content: Map and route panel -->
+  <div id="map"></div>
+  <div id="panel" class="shadow"></div>
+
+  <!-- Modal for Booking Parking Spot -->
+  <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form id="bookingForm">
+          <div class="modal-header">
+            <h5 class="modal-title" id="bookingModalLabel">Book Parking Spot</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="cancelBooking()"></button>
+          </div>
+          <div class="modal-body">
+            <div id="bookingDetails"></div>
+            <div class="mb-3">
+              <label for="bookingTime" class="form-label">Booking Time</label>
+              <input type="datetime-local" id="bookingTime" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label for="bookingDuration" class="form-label">Duration (hours)</label>
+              <input type="number" id="bookingDuration" class="form-control" required>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-success">Confirm Booking</button>
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal" onclick="cancelBooking()">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <!-- Leaflet Routing Machine JS -->
+  <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+  <!-- Leaflet Control Geocoder JS -->
+  <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+  <!-- Custom JS (user version) -->
+  <script src="app.js"></script>
+  <script>
+    // Set a flag so that our common JS knows this is the "user" version.
+    window.userRole = 'user';
+    // Initialize map and features for regular user.
+    initMap();
+  </script>
+</body>
+</html>
